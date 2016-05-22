@@ -27,7 +27,7 @@ static int id = 1;
 static int it = 0;
 static int kf = 0;
 
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+Tavisplash() throws FileNotFoundException, IOException {
 Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
 int vert = sSize.height;
 int hor = sSize.width;
@@ -44,7 +44,7 @@ text.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 text.setEditable(false);
 text.setEnabled(false);
 text.setDisabledTextColor(Color.BLACK);
-text.setBounds(30,35,260,50);
+text.setBounds(30,35,260,60);
 text.setLineWrap(true);
 text.setOpaque(false);
 text.setWrapStyleWord(true);
