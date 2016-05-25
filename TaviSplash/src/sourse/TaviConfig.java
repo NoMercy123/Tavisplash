@@ -36,6 +36,7 @@ public class TaviConfig {
     static JLabel path = new JLabel("Октавия");
     static JLabel colormark = new JLabel("Металлик");
     static JLabel frasemark = new JLabel("<default>");
+    static  JLabel Tavi = new JLabel(new ImageIcon("D:/Data/Октавия.png"));
 
     public static void main(String[] args) {
         try {
@@ -51,9 +52,6 @@ public class TaviConfig {
         final JFrame aboutframe = new JFrame("About");
         final JFrame fraseframe = new JFrame("FraseConfig");
         Font font = new Font("Comic Sans MS", Font.PLAIN, 14);
-
-        JLabel Tavi = new JLabel(new ImageIcon("D:/Data/OctaviaConfig.png"));
-
         JLabel color = new JLabel("Цвет: ");
         JLabel frase = new JLabel("Фразы: ");
         JLabel skin = new JLabel("Скин: ");
@@ -87,7 +85,7 @@ public class TaviConfig {
         JMenuItem PinkePie = new JMenuItem("Пинки Пай");
         JMenuItem Rarity = new JMenuItem("Рарити");
         JMenuItem Applejack = new JMenuItem("Эпплджек");
-        JMenuItem Raibow = new JMenuItem("Рейнбоу Дэш");
+        JMenuItem Cheshier = new JMenuItem("Чеширский кот");
         JMenuItem Octavia = new JMenuItem("Октавия");
         JTextArea abouttext = new JTextArea();
         JTextArea ConfigfFrase = new JTextArea();
@@ -102,11 +100,7 @@ public class TaviConfig {
             public void actionPerformed(ActionEvent e) {
                 config.setVisible(false);
                 try {
-                    javax.swing.LookAndFeel alloyLnF = new com.sun.java.swing.plaf.windows.WindowsLookAndFeel();
-                    UIManager.setLookAndFeel(alloyLnF);
                     new Tavisplash();
-                } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(TaviConfig.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(TaviConfig.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
@@ -150,7 +144,7 @@ public class TaviConfig {
         setSkin(PinkePie, "Пинки Пай");
         setSkin(Rarity, "Рарити");
         setSkin(Applejack, "Эпплджек");
-        setSkin(Raibow, "Рейнбоу Дэш");
+        setSkin(Cheshier, "Чеширский кот");
         setSkin(Octavia, "Октавия");
         setList(fraselist1, "list1");
         setList(fraselist2, "list2");
@@ -215,7 +209,7 @@ public class TaviConfig {
         skinmenu.add(Flattershy);
         skinmenu.add(Rarity);
         skinmenu.add(Applejack);
-        skinmenu.add(Raibow);
+        skinmenu.add(Cheshier);
         skinmenu.add(Octavia);
         test.add(colormenu);
         test.add(skinmenu);
@@ -267,6 +261,7 @@ public class TaviConfig {
 
             public void actionPerformed(ActionEvent e) {
                 Tavisplash.Tavi.setIcon(new ImageIcon("D:/Data/" + name + ".png"));
+                Tavi.setIcon(new ImageIcon("D:/Data/" + name + ".png"));
                 path.setText(name);
             }
         });
@@ -292,7 +287,7 @@ public class TaviConfig {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(TaviConfig.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                frasemark.setText(doc);
+                frasemark.setText("<"+doc+">");
             }
         });
     }

@@ -14,6 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import com.melloware.jintellitype.*;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * @author OldTeaOwl
@@ -31,6 +35,12 @@ static JLabel Tavi = new JLabel(new ImageIcon("D:/Data/OctaviaSmall1.png"));
 static JLabel label = new JLabel(new ImageIcon("D:/Data/text.png"));
 
 Tavisplash() throws FileNotFoundException, IOException {
+                    try {
+                    javax.swing.LookAndFeel alloyLnF = new com.sun.java.swing.plaf.windows.WindowsLookAndFeel();
+                    UIManager.setLookAndFeel(alloyLnF);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(TaviConfig.class.getName()).log(Level.SEVERE, null, ex);}
+
 Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
 int vert = sSize.height;
 int hor = sSize.width;
