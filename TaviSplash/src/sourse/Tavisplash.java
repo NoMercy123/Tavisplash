@@ -26,14 +26,14 @@ static String frase[];
 static int id = 1;
 static int it = 0;
 static int kf = 0;
+static JLabel background = new JLabel(new ImageIcon("D:/Data/metall.png"));
+static JLabel Tavi = new JLabel(new ImageIcon("D:/Data/OctaviaSmall1.png"));
+static JLabel label = new JLabel(new ImageIcon("D:/Data/text.png"));
 
 Tavisplash() throws FileNotFoundException, IOException {
 Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
 int vert = sSize.height;
 int hor = sSize.width;
-JLabel background = new JLabel(new ImageIcon("D:/Data/metall.png"));
-JLabel Tavi = new JLabel(new ImageIcon("D:/Data/OctaviaSmall1.png"));
-JLabel label = new JLabel(new ImageIcon("D:/Data/text.png"));
 BufferedReader reader = new BufferedReader(new FileReader("D:/Data/test.txt"));
 BufferedReader reader1 = new BufferedReader(new FileReader("D:/Data/test.txt"));
 String say2 = null;
