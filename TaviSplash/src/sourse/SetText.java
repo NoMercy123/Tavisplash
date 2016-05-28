@@ -18,12 +18,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.LineBorder;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
@@ -36,21 +33,14 @@ public class SetText {
    static int caret = 0;
    static JLabel buffer = null;
    static JLabel history[] = new JLabel[50];
-   static String file = "test";
+   static String file;
    static String lasttext;
-    public static void main(String[] args) {
-               try {
-            javax.swing.LookAndFeel alloyLnF = new com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel();
-            UIManager.setLookAndFeel(alloyLnF);
-        } catch (UnsupportedLookAndFeelException e) {
-            JOptionPane.showMessageDialog(null, "Error in a LaF of executable file");
-        }
-
+    public SetText(){
         Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
         int vert = sSize.height;
         int hor = sSize.width;
-        final JFrame ConfigFrame = new JFrame("Фразы");
         final JDialog TextFrame = new JDialog();
+        final JFrame ConfigFrame = new JFrame(file);
         JPanel border = new JPanel();
         final JPanel content = new JPanel();
         final JScrollPane scroll = new JScrollPane(content);
@@ -84,6 +74,8 @@ public class SetText {
             public void actionPerformed(ActionEvent e) {
         buffer.setText(text.getText());
         text.setText("");
+        caret = 0;
+        chars.setText("Символов: "+(caret)+"/200");
         TextFrame.setVisible(false);
         TextFrame.repaint();
             }
@@ -92,9 +84,6 @@ public class SetText {
             public void caretUpdate(CaretEvent e) {
             if(text.getCaretPosition()>caret){caret++;}
             else{caret--;}
-            if(caret<=200){lasttext = text.getText();}
-            if(caret>200){text.setText(lasttext);}
-
             chars.setText("Символов: "+(caret+1)+"/200");
             }
         });
@@ -116,9 +105,21 @@ public class SetText {
             }
         });
 
+        Delite.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                buffer.setText("");
+            }
+        });
+
         Save2File.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Write2File(file);
+                ConfigFrame.setVisible(false);
+            }
+        });
+
+        Back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 ConfigFrame.setVisible(false);
             }
         });
@@ -136,7 +137,6 @@ public class SetText {
         ConfigFrame.add(scroll);
         border.setOpaque(false);
         ConfigFrame.add(border);
-        ConfigFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ConfigFrame.setLayout(null);
         TextFrame.setLayout(null);
         content.setLayout(null);
@@ -163,7 +163,7 @@ item.setBorder(new LineBorder(Color.gray));
             }
         });
     buffer = item;
-    history[index+1] = item;
+    history[index+1] = buffer;
     scroll.setLayout(new BoxLayout(scroll, BoxLayout.Y_AXIS));
     scroll.setSize(360, (200+20*index));
     scroll.add(item);
@@ -171,7 +171,7 @@ item.setBorder(new LineBorder(Color.gray));
     public static void Write2File(String file){
                         try {
                         BufferedWriter writer = new BufferedWriter(new FileWriter("D:/Data/"+file+".txt"));
-                        for(int i = 0; history[i] != null; i++) {
+                        for(int i = 1; history[i] != null; i++) {
                             System.out.println(history[i].getText());
                             writer.write(history[i].getText() + "\n");
                         }
