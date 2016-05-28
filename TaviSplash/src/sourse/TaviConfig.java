@@ -33,10 +33,10 @@ import javax.swing.border.LineBorder;
  */
 public class TaviConfig {
 
-    static JLabel path = new JLabel("Октавия");
+    static JLabel path = new JLabel("Чеширский кот");
     static JLabel colormark = new JLabel("Металлик");
     static JLabel frasemark = new JLabel("<default>");
-    static  JLabel Tavi = new JLabel(new ImageIcon("D:/Data/Октавия.png"));
+    static JLabel Tavi = new JLabel(new ImageIcon("D:/Data/Чеширский кот.png"));
 
     public static void main(String[] args) {
         try {
@@ -61,7 +61,7 @@ public class TaviConfig {
         JButton Back4Config = new JButton("Готово");
         JButton Me = new JButton("OldTeaOwl");
         JLabel how2use = new JLabel("How2Use: Ctrl+Spase");
-        JLabel project = new JLabel(new ImageIcon("D:/Data/AboutOctavia.png"));
+        JLabel project = new JLabel(new ImageIcon("---"));//D:/Data/AboutOctavia.png
         JMenuBar test = new JMenuBar();
         JMenu colormenu = new JMenu("Цвет");
         JMenu frasemenu = new JMenu("Фразы");
@@ -80,11 +80,11 @@ public class TaviConfig {
         JMenuItem fraselist4 = new JMenuItem("Список 4");
         JMenuItem fraselist5 = new JMenuItem("Список 5");
 
-        JMenuItem Twilight = new JMenuItem("Твайлайт Спаркл");
-        JMenuItem Flattershy = new JMenuItem("Флаттершай");
-        JMenuItem PinkePie = new JMenuItem("Пинки Пай");
-        JMenuItem Rarity = new JMenuItem("Рарити");
-        JMenuItem Applejack = new JMenuItem("Эпплджек");
+        JMenuItem Twilight = new JMenuItem("---");//Твайлайт Спаркл
+        JMenuItem Flattershy = new JMenuItem("---");//Флаттершай
+        JMenuItem PinkePie = new JMenuItem("---");//Пинки Пай
+        JMenuItem Rarity = new JMenuItem("---");//Рарити
+        JMenuItem Applejack = new JMenuItem("---");//Эпплджек
         JMenuItem Cheshier = new JMenuItem("Чеширский кот");
         JMenuItem Octavia = new JMenuItem("Октавия");
         JTextArea abouttext = new JTextArea();
@@ -98,6 +98,7 @@ public class TaviConfig {
         run.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
+setWindowsLaF();
                 config.setVisible(false);
                 try {
                     new Tavisplash();
@@ -278,7 +279,7 @@ public class TaviConfig {
                     try {
                         BufferedWriter writer = new BufferedWriter(new FileWriter("D:/Data/test.txt"));
                         while (tester.readLine() != null) {
-                            writer.write(reader.readLine()+"\n");
+                            writer.write(reader.readLine() + "\n");
                         }
                         writer.close();
                     } catch (IOException ex) {
@@ -287,8 +288,15 @@ public class TaviConfig {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(TaviConfig.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                frasemark.setText("<"+doc+">");
+                frasemark.setText("<" + doc + ">");
             }
         });
+    }
+    public static void setWindowsLaF(){
+                   try {
+                 UIManager.setLookAndFeel(new com.sun.java.swing.plaf.windows.WindowsLookAndFeel());
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(TaviConfig.class.getName()).log(Level.SEVERE, null, ex);
+                }
     }
 }

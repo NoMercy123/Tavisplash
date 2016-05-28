@@ -26,14 +26,20 @@ static String frase[];
 static int id = 1;
 static int it = 0;
 static int kf = 0;
+static JLabel background = new JLabel(new ImageIcon("D:/Data/metall.png"));
+static JLabel Tavi = new JLabel(new ImageIcon("D:/Data/Чеширский кот.png"));
+static JLabel label = new JLabel(new ImageIcon("D:/Data/text.png"));
 
-Tavisplash() throws FileNotFoundException, IOException {
-Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
+    public Tavisplash() throws FileNotFoundException, IOException {
+        TaviConfig.setWindowsLaF();
+        TavisplashRun();
+    }
+
+void TavisplashRun() throws FileNotFoundException, IOException {
+TaviConfig.setWindowsLaF();
+    Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
 int vert = sSize.height;
 int hor = sSize.width;
-JLabel background = new JLabel(new ImageIcon("D:/Data/metall.png"));
-JLabel Tavi = new JLabel(new ImageIcon("D:/Data/OctaviaSmall1.png"));
-JLabel label = new JLabel(new ImageIcon("D:/Data/text.png"));
 BufferedReader reader = new BufferedReader(new FileReader("D:/Data/test.txt"));
 BufferedReader reader1 = new BufferedReader(new FileReader("D:/Data/test.txt"));
 String say2 = null;
@@ -73,7 +79,7 @@ it++;
 if(it>kf){System.exit(0);}
 text.setText(frase[it]);
 for(float i = 0; i<1; i += 0.1f){SplashVoid(i,50);}
-SplashVoid(1,5000);
+SplashVoid(1,2500);
 for(float i = 1; i>0; i -= 0.1f){SplashVoid(i,50);}
 SplashVoid(0, 0);
         }

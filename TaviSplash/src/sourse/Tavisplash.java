@@ -14,10 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import com.melloware.jintellitype.*;
 import java.awt.event.KeyEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * @author OldTeaOwl
@@ -31,17 +27,17 @@ static int id = 1;
 static int it = 0;
 static int kf = 0;
 static JLabel background = new JLabel(new ImageIcon("D:/Data/metall.png"));
-static JLabel Tavi = new JLabel(new ImageIcon("D:/Data/OctaviaSmall1.png"));
+static JLabel Tavi = new JLabel(new ImageIcon("D:/Data/Чеширский кот.png"));
 static JLabel label = new JLabel(new ImageIcon("D:/Data/text.png"));
 
-Tavisplash() throws FileNotFoundException, IOException {
-                    try {
-                    javax.swing.LookAndFeel alloyLnF = new com.sun.java.swing.plaf.windows.WindowsLookAndFeel();
-                    UIManager.setLookAndFeel(alloyLnF);
-                } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(TaviConfig.class.getName()).log(Level.SEVERE, null, ex);}
+    public Tavisplash() throws FileNotFoundException, IOException {
+        TaviConfig.setWindowsLaF();
+        TavisplashRun();
+    }
 
-Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
+void TavisplashRun() throws FileNotFoundException, IOException {
+TaviConfig.setWindowsLaF();
+    Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
 int vert = sSize.height;
 int hor = sSize.width;
 BufferedReader reader = new BufferedReader(new FileReader("D:/Data/test.txt"));
@@ -83,7 +79,7 @@ it++;
 if(it>kf){System.exit(0);}
 text.setText(frase[it]);
 for(float i = 0; i<1; i += 0.1f){SplashVoid(i,50);}
-SplashVoid(1,5000);
+SplashVoid(1,2500);
 for(float i = 1; i>0; i -= 0.1f){SplashVoid(i,50);}
 SplashVoid(0, 0);
         }
